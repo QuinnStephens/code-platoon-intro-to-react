@@ -7,8 +7,10 @@ class Header extends Component {
     return (
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>{this.props.text}</p>
-        <button onClick={this.props.onClickButton}>Click me!</button>
+        <form>
+          <input type="text" onChange={this.props.onUpdateText} />
+        </form>
+        <button onClick={this.props.onClickButton}>Submit</button>
       </header>
     );
   }
@@ -19,7 +21,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      clickCount: 0
+      input: ""
     };
   }
 
@@ -27,10 +29,10 @@ class App extends Component {
     return (
       <div className="App">
         <Header
-          text={`Click count: ${this.state.clickCount}`}
-          onClickButton={() =>
-            this.setState({ clickCount: this.state.clickCount + 1 })
-          }
+          onUpdateText={event => {
+            this.setState({ input: event.target.value });
+          }}
+          onClickButton={() => alert(this.state.input)}
         />
         <p>I'm text that lives outside the header!</p>
       </div>
