@@ -28,7 +28,9 @@ class App extends Component {
       <div className="App">
         <Header
           text={this.state.text}
-          onClickButton={() => alert("Button clicked!")}
+          onClickButton={() =>
+            this.setState({ text: "You clicked the button and updated state!" })
+          }
         />
         <p>I'm text that lives outside the header!</p>
       </div>
