@@ -7,13 +7,7 @@ class Header extends Component {
     return (
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        {this.props.showCongrats && (
-          <h1>Congratulations! You submitted text!</h1>
-        )}
-        <form>
-          <input type="text" onChange={this.props.onUpdateText} />
-        </form>
-        <button onClick={this.props.onClickButton}>Submit</button>
+        <img src={this.props.imageUrl} alt="" />
       </header>
     );
   }
@@ -24,21 +18,27 @@ class App extends Component {
     super(props);
 
     this.state = {
-      input: "",
-      submitted: false
+      imageUrl: undefined
     };
+  }
+
+  componentDidMount() {
+    fetch("https://jsonplaceholder.typicode.com/photos/1")
+      .then(response => {
+        return response.json();
+      })
+      .then(json => {
+        debugger;
+        this.setState({
+          imageUrl: json.url
+        });
+      });
   }
 
   render() {
     return (
       <div className="App">
-        <Header
-          showCongrats={this.state.submitted && this.state.input.length > 0}
-          onUpdateText={event => {
-            this.setState({ input: event.target.value });
-          }}
-          onClickButton={() => this.setState({ submitted: true })}
-        />
+        <Header imageUrl={this.state.imageUrl} />
         <p>I'm text that lives outside the header!</p>
       </div>
     );
