@@ -19,7 +19,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      text: "I am a text variable. I live in the state!"
+      clickCount: 0
     };
   }
 
@@ -27,9 +27,9 @@ class App extends Component {
     return (
       <div className="App">
         <Header
-          text={this.state.text}
+          text={`Click count: ${this.state.clickCount}`}
           onClickButton={() =>
-            this.setState({ text: "You clicked the button and updated state!" })
+            this.setState({ clickCount: this.state.clickCount + 1 })
           }
         />
         <p>I'm text that lives outside the header!</p>
