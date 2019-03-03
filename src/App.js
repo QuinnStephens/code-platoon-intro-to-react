@@ -4,12 +4,10 @@ import "./App.css";
 
 class Header extends Component {
   render() {
-    const text = "I am a text variable!";
-
     return (
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>{text}</p>
+        <p>{this.props.text}</p>
       </header>
     );
   }
@@ -19,7 +17,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
+        <Header text="I am a text variable!" />
         <p>I'm text that lives outside the header!</p>
       </div>
     );
