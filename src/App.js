@@ -7,6 +7,9 @@ class Header extends Component {
     return (
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        {this.props.showCongrats && (
+          <h1>Congratulations! You submitted text!</h1>
+        )}
         <form>
           <input type="text" onChange={this.props.onUpdateText} />
         </form>
@@ -21,7 +24,8 @@ class App extends Component {
     super(props);
 
     this.state = {
-      input: ""
+      input: "",
+      submitted: false
     };
   }
 
@@ -29,10 +33,11 @@ class App extends Component {
     return (
       <div className="App">
         <Header
+          showCongrats={this.state.submitted && this.state.input.length > 0}
           onUpdateText={event => {
             this.setState({ input: event.target.value });
           }}
-          onClickButton={() => alert(this.state.input)}
+          onClickButton={() => this.setState({ submitted: true })}
         />
         <p>I'm text that lives outside the header!</p>
       </div>
