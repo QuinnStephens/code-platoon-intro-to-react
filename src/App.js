@@ -15,11 +15,19 @@ class Header extends Component {
 }
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      text: "I am a text variable. I live in the state!"
+    };
+  }
+
   render() {
     return (
       <div className="App">
         <Header
-          text="I am a text variable!"
+          text={this.state.text}
           onClickButton={() => alert("Button clicked!")}
         />
         <p>I'm text that lives outside the header!</p>
