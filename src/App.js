@@ -4,11 +4,13 @@ import "./App.css";
 
 class App extends Component {
   render() {
+    const text = "I am a text variable!";
+
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <p>Hello from React!</p>
+          <p>{text}</p>
         </header>
       </div>
     );
