@@ -28,7 +28,6 @@ class App extends Component {
         return response.json();
       })
       .then(json => {
-        debugger;
         this.setState({
           imageUrl: json.url
         });
